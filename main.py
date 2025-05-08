@@ -24,13 +24,14 @@ if not st.session_state.authenticated:
     username = st.text_input("Usuário")
     password = st.text_input("Senha", type="password")
 
-    if st.button("Entrar"):
-        if username == "spesia123" and password == "spesia123":
-            st.success("Login bem-sucedido!")
-            st.session_state.authenticated = True
-            st.experimental_rerun()
-        else:
-            st.error("Usuário ou senha incorretos.")
+   if st.button("Entrar"):
+    if username == "spesia123" and password == "spesia123":
+        st.success("Login bem-sucedido!")
+        st.session_state.authenticated = True
+        st.rerun()  # <- substituindo st.experimental_rerun()
+    else:
+        st.error("Usuário ou senha incorretos.")
+
 else:
     st.markdown("## Bem-vindo ao Anonimizador!")
     st.markdown("Carregando funcionalidades...")
