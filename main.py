@@ -32,8 +32,6 @@ if not st.session_state.authenticated:
         else:
             st.error("Usuário ou senha incorretos.")
 else:
-    # Usuário autenticado → renderiza página do Anonimizador diretamente
     st.markdown("## Bem-vindo ao Anonimizador!")
     st.markdown("Carregando funcionalidades...")
-
-    import 0_Anonimizador  # importa e executa o módulo da página
+    import anonimizador_view  # <- nome do arquivo renomeado, sem prefixo numérico
