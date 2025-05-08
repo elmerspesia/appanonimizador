@@ -22,6 +22,7 @@ password = st.text_input("Senha", type="password")
 if st.button("Entrar"):
     if username == "spesia123" and password == "spesia123":
         st.success("Login bem-sucedido!")
-        st.switch_page("0_Anonimizador.py")
+        st.switch_page("Anonimizador")
     else:
         st.error("Usuário ou senha incorretos.")
+
