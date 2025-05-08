@@ -9,7 +9,7 @@ def test_oracle_connection(host, port, service_name, user, password):
     except Exception:
         return False
 
-def load_data_from_oracle(host, port, service_name, user, password, query="SELECT * FROM YOUR_TABLE"):
+def load_data_from_oracle(host, port, service_name, user, password, query):
     dsn = cx_Oracle.makedsn(host, port, service_name=service_name)
     with cx_Oracle.connect(user=user, password=password, dsn=dsn) as connection:
         df = pd.read_sql(query, con=connection)
