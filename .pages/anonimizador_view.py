@@ -1,9 +1,14 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 import streamlit as st
 import pandas as pd
 import os
 from io import BytesIO
 from anon_utils.anonymizer import anonymize_data, save_data
 from anon_utils.oracle_connector import test_oracle_connection, load_data_from_oracle
+
 
 st.set_page_config(page_title="Anonimizador", layout="wide")
 
