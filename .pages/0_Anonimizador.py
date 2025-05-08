@@ -24,16 +24,21 @@ if input_type == "Oracle":
     service_name = st.text_input("Service Name")
     user = st.text_input("Usuário")
     password = st.text_input("Senha", type="password")
+    table_name = st.text_input("Nome da Tabela")
 
     if st.button("Testar Conexão"):
         with st.spinner("Testando conexão..."):
             result = test_oracle_connection(host, port, service_name, user, password)
             st.success("Conexão bem-sucedida!") if result else st.error("Erro na conexão.")
 
-    if st.button("Carregar Dados"):
-        with st.spinner("Carregando dados..."):
-            df = load_data_from_oracle(host, port, service_name, user, password)
-            st.success("Dados carregados com sucesso.")
+    if st.button("Carregar Dados") and table_name:
+        query = f"SELECT * FROM {table_name}"
+        with st.spinner(f"Carregando dados da tabela `{table_name}`..."):
+            try:
+                df = load_data_from_oracle(host, port, service_name, user, password, query)
+                st.success("Dados carregados com sucesso.")
+            except Exception as e:
+                st.error(f"Erro ao carregar dados: {e}")
 
 else:
     uploaded_file = st.file_uploader("Faça upload do arquivo de entrada", type=["csv", "txt", "xlsx"])
